@@ -23,7 +23,7 @@ export class PostsService {
   }
 
   fetchPosts() {
-    this.http.get<{ [key: string]: Post }>
+    return this.http.get<{ [key: string]: Post }>
       ('https://ng-complete-guide-242a4-default-rtdb.firebaseio.com/posts.json')
       .pipe(map((responseData) => {
         const postArray: Post[] = [];
@@ -33,8 +33,6 @@ export class PostsService {
           }
         }
         return postArray;
-      }))
-      .subscribe((posts: Post[]) => {
-      });
+      }));
   }
 }
