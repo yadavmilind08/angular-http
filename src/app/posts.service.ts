@@ -18,7 +18,14 @@ export class PostsService {
       title: title,
       content: content
     }
-    this.http.post<{ name: string }>('https://ng-complete-guide-242a4-default-rtdb.firebaseio.com/posts.json', postData)
+    this.http.post<{ name: string }>
+      (
+        'https://ng-complete-guide-242a4-default-rtdb.firebaseio.com/posts.json',
+        postData,
+        {
+          observe: 'response'
+        }
+      )
       .subscribe(responseData => {
         console.log({ responseData });
       }, error => {
